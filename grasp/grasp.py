@@ -46,7 +46,7 @@ class Grasp:
         self.mean_abs_error = np.mean(abs_error)
 
     def _plot(self):
-        plt.figure(figsize=(4, 4))
+        plt.figure(figsize=(5, 5))
 
         for actual_value, perceived_value in zip(self.actual, self.perceived):
             jit = (random.randrange(-20, 20, 1)) / 100
@@ -63,8 +63,9 @@ class Grasp:
         plt.tight_layout()
         plt.title(f'{self.subject_id},: {self.condition}')
         if self.fig_path:
-            figure_path = self.fig_path / (self.subject_id + '_' + self.condition + '.png')
-            plt.savefig(figure_path, dpi=180)
+            figure_path_pdf = self.fig_path / (self.subject_id + '_' + self.condition + '.png')
+            figure_path_svg = self.fig_path / (self.subject_id + '_' + self.condition + '.svg')
+            plt.savefig(figure_path_pdf, figure_path_svg, dpi=180)
             plt.close()
         if self.show_plot:
             plt.show()
