@@ -58,6 +58,8 @@ class Grasp:
         plt.plot([x1, x2], [y1, y2], '-k')
         plt.ylabel('Perceived width (cm)')
         plt.xlabel('Actual width (cm)')
+        plt.set_xticks = [2, 4, 6, 8, 10]
+        plt.set_yticks = [0, 2, 4, 6, 8, 10, 12]
         plt.grid()
         plt.plot([x1, x2], [x1, x2], '--', color='lightgrey')
         plt.tight_layout()
@@ -65,7 +67,8 @@ class Grasp:
         if self.fig_path:
             figure_path_pdf = self.fig_path / (self.subject_id + '_' + self.condition + '.png')
             figure_path_svg = self.fig_path / (self.subject_id + '_' + self.condition + '.svg')
-            plt.savefig(figure_path_pdf, figure_path_svg, dpi=180)
+            plt.savefig(figure_path_pdf, dpi=180)
+            plt.savefig(figure_path_svg, dpi=180)
             plt.close()
         if self.show_plot:
             plt.show()
