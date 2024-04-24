@@ -37,7 +37,7 @@ class Grasp:
         actual = sm.add_constant(self.actual)
         model = sm.OLS(self.perceived, actual).fit()
         self.r_squared = model.rsquared
-        #self.intercept, self.slope = model.params
+        self.intercept, self.slope = model.params
 
     def _mean_abs_error(self):
         abs_error = list()
