@@ -18,6 +18,7 @@ class Grasp:
         self.actual = actual
         self.perceived = perceived
         self.r_squared = None
+        self.residuals = None
         self.rmse = None
         self.mean_abs_error = None
         self.intercept = None
@@ -43,7 +44,7 @@ class Grasp:
     def _rmse(self):
         actual = sm.add_constant(self.actual)
         model = sm.OLS(self.perceived, actual).fit()
-        residuals = model.resid
+        self.residuals = model.resid
         self.rmse = np.sqrt(np.mean(residuals ** 2))
 
     def _mean_abs_error(self):
